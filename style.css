@@ -9,3 +9,10 @@
 .incorrect {
   color: red;
 }
+
+.disabled {
+  pointer-events: none;
+}
+
+.disabled > button {
+}
