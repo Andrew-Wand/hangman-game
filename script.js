@@ -53,6 +53,9 @@ const handleLetterClick = (e) => {
     letters.classList.add("incorrect");
     if (lives <= 1) {
       alert("You lose");
+      alphabetContainer.classList.add("disabled");
+      lives = 0;
+      livesContainer.innerHTML = `Lives Remaining ${lives}`;
     } else {
       lives -= 1;
       livesContainer.innerHTML = `Lives remaining ${lives}`;
