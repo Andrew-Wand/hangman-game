@@ -62,10 +62,13 @@ const handleLetterClick = (e) => {
       letters.classList.add("incorrect");
       if (lives <= 1) {
         addBody();
-        alert("You lose");
+        alert(`
+        You lose! 
+        
+        Correct answer: ${chosenWord}`);
         alphabetContainer.classList.add("disabled");
         lives = 0;
-        revealedAnswer.innerHTML = `${chosenWord}`;
+        // revealedAnswer.innerHTML = `Answer: ${chosenWord}`;
         // livesContainer.innerHTML = `Lives Remaining ${lives}`;
       } else {
         addBody();
