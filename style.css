@@ -1,5 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.wrapper {
+  margin: auto;
+  width: 90%;
+}
+
+/* Title and lives remaining */
+h1 {
+  text-align: center;
+  font-size: 45px;
+  margin-bottom: 3rem;
+  margin-top: 5rem;
+}
+
+/* Hangman area */
+.hangman-container {
+  border: 1px dotted #000;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Answer words and letters */
+.answer-container {
+  margin: 40px 0 40px 0;
+}
+
+.answer-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin-right: 40px;
+}
+
+.guess {
+  margin: 0 5px 0 5px;
+  font-size: 30px;
+}
+
+/* Alphabet letters / Reset button */
 .alphabet-container {
-  margin-top: 10px;
+  margin-top: 15px;
+  font-size: 0;
+  text-align: center;
+}
+
+.alphabetBtn {
+  font-size: 28px;
+  margin: 5px;
+  width: 3rem;
 }
 
 .correct {
@@ -15,4 +75,26 @@
 }
 
 .disabled > button {
+}
+
+.reset-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.reset-btn {
+  background-color: blue;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 375px) {
+  body {
+    align-items: top;
+  }
 }

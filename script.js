@@ -2,8 +2,15 @@ const alphabetContainer = document.getElementById("alphabetContainer");
 const answerContainer = document.getElementById("answerContainer");
 const livesContainer = document.getElementById("livesContainer");
 const resetBtn = document.getElementById("resetBtn");
+const answerList = document.getElementById("answerList");
+const revealedAnswer = document.getElementById("revealedAnswer");
 
-let lives = 10;
+// Canvas stuff
+const canvas = document.getElementById("hangman");
+const context = canvas.getContext("2d");
+//
+
+let lives = 9;
 let guess;
 let counter = 0;
 
@@ -19,6 +26,7 @@ const createButtons = () => {
     .split("")
     .map(
       (letter) => `
+
     <button class="alphabetBtn" id="${letter}">
         ${letter}
     </button>
@@ -52,13 +60,16 @@ const handleLetterClick = (e) => {
   } else {
     letters.classList.add("incorrect");
     if (lives <= 1) {
+      addBody();
       alert("You lose");
       alphabetContainer.classList.add("disabled");
       lives = 0;
-      livesContainer.innerHTML = `Lives Remaining ${lives}`;
+      revealedAnswer.innerHTML = `${chosenWord}`;
+      // livesContainer.innerHTML = `Lives Remaining ${lives}`;
     } else {
+      addBody();
       lives -= 1;
-      livesContainer.innerHTML = `Lives remaining ${lives}`;
+      // livesContainer.innerHTML = `Lives remaining ${lives}`;
       letters.disabled = "true";
     }
   }
@@ -76,19 +87,109 @@ const generateAnswer = () => {
       guess.innerHTML = "-";
     }
 
-    answerContainer.appendChild(guess);
+    answerList.appendChild(guess);
   }
 };
 
 // Creating start of game
 const createGameStart = () => {
-  let lives = 10;
-
-  livesContainer.innerHTML = `Lives Remaining: ${lives}`;
+  // livesContainer.innerHTML = `Lives Remaining: ${lives}`;
 
   generateAnswer();
   alphabetContainer.innerHTML = createButtons();
   alphabetContainer.addEventListener("click", handleLetterClick);
+};
+
+//DRAW HANGMAN
+Draw = (part) => {
+  switch (part) {
+    case "gallows":
+      context.strokeStyle = "#444";
+      context.lineWidth = 10;
+      context.beginPath();
+      context.moveTo(175, 225);
+      context.lineTo(5, 225);
+      context.moveTo(40, 225);
+      context.lineTo(25, 5);
+      context.lineTo(100, 5);
+      context.lineTo(100, 25);
+      context.stroke();
+      break;
+
+    case "head":
+      context.lineWidth = 5;
+      context.beginPath();
+      context.arc(100, 50, 25, 0, Math.PI * 2, true);
+      context.closePath();
+      context.stroke();
+      break;
+
+    case "body":
+      context.beginPath();
+      context.moveTo(100, 75);
+      context.lineTo(100, 140);
+      context.stroke();
+      break;
+
+    case "rightHarm":
+      context.beginPath();
+      context.moveTo(100, 85);
+      context.lineTo(60, 100);
+      context.stroke();
+      break;
+
+    case "leftHarm":
+      context.beginPath();
+      context.moveTo(100, 85);
+      context.lineTo(140, 100);
+      context.stroke();
+      break;
+
+    case "rightLeg":
+      context.beginPath();
+      context.moveTo(100, 140);
+      context.lineTo(80, 190);
+      context.stroke();
+      break;
+
+    case "rightFoot":
+      context.beginPath();
+      context.moveTo(82, 190);
+      context.lineTo(70, 185);
+      context.stroke();
+      break;
+
+    case "leftLeg":
+      context.beginPath();
+      context.moveTo(100, 140);
+      context.lineTo(125, 190);
+      context.stroke();
+      break;
+
+    case "leftFoot":
+      context.beginPath();
+      context.moveTo(122, 190);
+      context.lineTo(135, 185);
+      context.stroke();
+      break;
+  }
+};
+const draws = [
+  "gallows",
+  "head",
+  "body",
+  "rightHarm",
+  "leftHarm",
+  "rightLeg",
+  "leftLeg",
+  "rightFoot",
+  "leftFoot",
+];
+let step = 0;
+//Add next body part
+const addBody = () => {
+  Draw(draws[step++]);
+  if (undefined === draws[step]) this.disabled = true;
 };
 
 // Event listeners
