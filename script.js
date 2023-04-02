@@ -14,7 +14,19 @@ let lives = 9;
 let guess;
 let counter = 0;
 
-const words = ["pear", "apple", "banana"];
+const words = [
+  "pear",
+  "apple",
+  "banana",
+  "mango",
+  "lemon",
+  "pineapple",
+  "strawberry",
+  "orange",
+  "blackberry",
+  "lemon",
+  "raspberry",
+];
 
 const wordOrder = Math.floor(Math.random() * words.length);
 const chosenWord = words[wordOrder];
