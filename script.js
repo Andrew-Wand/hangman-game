@@ -38,39 +38,41 @@ const createButtons = () => {
 
 // Handle clicking alphabet buttons
 const handleLetterClick = (e) => {
-  let currentGuess = e.target.id;
-  let letters = document.getElementById(e.target.id);
-  Includes = answerSplit.includes(currentGuess);
+  if (e.target.id !== "alphabetContainer") {
+    let currentGuess = e.target.id;
+    let letters = document.getElementById(e.target.id);
+    Includes = answerSplit.includes(currentGuess);
 
-  for (let i = 0; i < chosenWord.length; i++) {
-    let g = document.getElementById(`guess${i}`);
-    if (answerSplit[i] === currentGuess) {
-      g.innerHTML = currentGuess;
-      counter += 1;
+    for (let i = 0; i < chosenWord.length; i++) {
+      let g = document.getElementById(`guess${i}`);
+      if (answerSplit[i] === currentGuess) {
+        g.innerHTML = currentGuess;
+        counter += 1;
+      }
     }
-  }
 
-  if (Includes === true) {
-    letters.classList.add("correct");
-    letters.disabled = "true";
-    if (counter === chosenWord.length) {
-      console.log("You win!");
-      alphabetContainer.classList.add("disabled");
-    }
-  } else {
-    letters.classList.add("incorrect");
-    if (lives <= 1) {
-      addBody();
-      alert("You lose");
-      alphabetContainer.classList.add("disabled");
-      lives = 0;
-      revealedAnswer.innerHTML = `${chosenWord}`;
-      // livesContainer.innerHTML = `Lives Remaining ${lives}`;
-    } else {
-      addBody();
-      lives -= 1;
-      // livesContainer.innerHTML = `Lives remaining ${lives}`;
+    if (Includes === true) {
+      letters.classList.add("correct");
       letters.disabled = "true";
+      if (counter === chosenWord.length) {
+        console.log("You win!");
+        alphabetContainer.classList.add("disabled");
+      }
+    } else {
+      letters.classList.add("incorrect");
+      if (lives <= 1) {
+        addBody();
+        alert("You lose");
+        alphabetContainer.classList.add("disabled");
+        lives = 0;
+        revealedAnswer.innerHTML = `${chosenWord}`;
+        // livesContainer.innerHTML = `Lives Remaining ${lives}`;
+      } else {
+        addBody();
+        lives -= 1;
+        // livesContainer.innerHTML = `Lives remaining ${lives}`;
+        letters.disabled = "true";
+      }
     }
   }
 };
