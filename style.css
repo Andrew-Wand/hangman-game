@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +11,8 @@ body {
   align-items: center;
   height: 100vh;
   justify-content: center;
+  background-color: #f4bfbf;
+  font-family: "Alkatra", sans-serif;
 }
 
 .wrapper {
@@ -22,11 +26,12 @@ h1 {
   font-size: 45px;
   margin-bottom: 3rem;
   margin-top: 5rem;
+  color: #faf0d7;
 }
 
 /* Hangman area */
 .hangman-container {
-  border: 1px dotted #000;
+  border: 3px dotted #000;
   border-radius: 5px;
   padding: 20px;
   text-align: center;
@@ -60,12 +65,15 @@ h1 {
   margin-top: 15px;
   font-size: 0;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .alphabetBtn {
-  font-size: 28px;
+  font-size: 32px;
   margin: 5px;
   width: 3rem;
+  border-radius: 5px;
+  border: none;
 }
 
 .correct {
@@ -90,11 +98,12 @@ h1 {
 }
 
 .reset-btn {
-  background-color: blue;
+  background-color: #8cc0de;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 /* MEDIA QUERIES */
@@ -104,8 +113,15 @@ h1 {
     align-items: top;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .wrapper {
     width: 50%;
+  }
+
+  .hangman-container {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 30px;
   }
 }
