@@ -20,13 +20,13 @@ body {
   width: 90%;
 }
 
-/* Title and lives remaining */
+/* Title */
 h1 {
   text-align: center;
   font-size: 45px;
   margin-bottom: 3rem;
   margin-top: 5rem;
-  color: #faf0d7;
+  color: #fff;
 }
 
 /* Hangman area */
@@ -74,6 +74,7 @@ h1 {
   width: 3rem;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 }
 
 .correct {
@@ -105,6 +106,24 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
+}
+
+/* Rules section */
+.rules-container {
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  background-color: rgba(0, 0, 0, .2);
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+}
+
+/* Animations/Hover */
+.alphabetBtn:hover {
+  width: 2.7rem;
+  
+  transition: all .2s ease-out;
 }
 
 /* MEDIA QUERIES */
