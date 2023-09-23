@@ -12,8 +12,10 @@
       <header>
         <h1>Hungry Hangman</h1>
         <div class="reset-container">
+          <button class="rules-btn" id="rulesBtn">Rules</button>
           <button id="resetBtn" class="reset-btn">Reset</button>
         </div>
+       
         <div class="revealed-answer" id="revealedAnswer"></div>
       </header>
 
@@ -23,12 +25,27 @@
         <canvas id="hangman" width="180" height="250"></canvas>
       </div>
       
-      <div class="rules-container">
-        <p>Rules:</p>
-        <p>
-          Pick a letter and try to guess the word! (Hint: They are all fruit!)
-        </p>
+      <!-- Modal for rules -->
+      <div class="rules-modal-container" id="rulesModalContainer">
+        <div class="rules-container">
+          <p>Rules:</p>
+          <p>
+            Pick a letter and try to guess the word! (Hint: They are all fruit!)
+          </p>
+          <button class="modal-close-btn" id="closeBtn">Close</button>
+        </div>
       </div>
+
+      <!-- Modal for losing -->
+      <div class="lose-modal-container" id="loseModalContainer">
+        <div class="lose-container" id="loseContainer">
+      
+        </div>
+        <div>
+          <button id="loseResetBtn" class="reset-btn lose-btn">Reset</button>
+        </div>
+      </div>
+    
       <div class="answer-container" id="answerContainer">
         <ul class="answer-list" id="answerList"></ul>
       </div>

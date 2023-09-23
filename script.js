@@ -4,6 +4,12 @@ const livesContainer = document.getElementById("livesContainer");
 const resetBtn = document.getElementById("resetBtn");
 const answerList = document.getElementById("answerList");
 const revealedAnswer = document.getElementById("revealedAnswer");
+const rulesBtn = document.getElementById("rulesBtn");
+const rulesModalContainer = document.getElementById("rulesModalContainer");
+const closeBtn = document.getElementById("closeBtn");
+const loseModalContainer = document.getElementById("loseModalContainer");
+const loseContainer = document.getElementById("loseContainer");
+const loseResetBtn = document.getElementById("loseResetBtn");
 
 // Canvas stuff
 const canvas = document.getElementById("hangman");
@@ -74,11 +80,14 @@ const handleLetterClick = (e) => {
       letters.classList.add("incorrect");
       if (lives <= 1) {
         addBody();
-        alert(`
-        You lose! 
-        
-        Correct answer: ${chosenWord}`);
+        // alert(`
+        // You lose!
+
+        // Correct answer: ${chosenWord}`);
+        loseModalContainer.classList.add("active");
         alphabetContainer.classList.add("disabled");
+        loseContainer.innerHTML = `<p>You lose! </p> 
+        <p>Correct answer: ${chosenWord}</p>`;
         lives = 0;
         // revealedAnswer.innerHTML = `Answer: ${chosenWord}`;
         // livesContainer.innerHTML = `Lives Remaining ${lives}`;
@@ -121,7 +130,7 @@ const createGameStart = () => {
 Draw = (part) => {
   switch (part) {
     case "gallows":
-      context.strokeStyle = "#444";
+      context.strokeStyle = "#fff";
       context.lineWidth = 10;
       context.beginPath();
       context.moveTo(175, 225);
@@ -209,10 +218,26 @@ const addBody = () => {
   if (undefined === draws[step]) this.disabled = true;
 };
 
+// Modal open and close
+const modalOpen = () => {
+  rulesModalContainer.classList.add("active");
+};
+
+const modalClose = () => {
+  rulesModalContainer.classList.remove("active");
+};
+
 // Event listeners
 alphabetContainer.addEventListener("click", handleLetterClick);
 resetBtn.addEventListener("click", () => {
   location.reload();
 });
+
+loseResetBtn.addEventListener("click", () => {
+  location.reload();
+});
+
+rulesBtn.addEventListener("click", modalOpen);
+closeBtn.addEventListener("click", modalClose);
 
 window.onload = createGameStart();
