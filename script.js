@@ -10,6 +10,9 @@ const closeBtn = document.getElementById("closeBtn");
 const loseModalContainer = document.getElementById("loseModalContainer");
 const loseContainer = document.getElementById("loseContainer");
 const loseResetBtn = document.getElementById("loseResetBtn");
+const winModalContainer = document.getElementById("winModalContainer");
+const winContainer = document.getElementById("winContainer");
+const winResetBtn = document.getElementById("winResetBtn");
 
 // Canvas stuff
 const canvas = document.getElementById("hangman");
@@ -73,7 +76,9 @@ const handleLetterClick = (e) => {
       letters.classList.add("correct");
       letters.disabled = "true";
       if (counter === chosenWord.length) {
-        console.log("You win!");
+        winModalContainer.classList.add("active");
+        winContainer.innerHTML = `<p>You win! </p> 
+        <p>Why not play again?</p>`;
         alphabetContainer.classList.add("disabled");
       }
     } else {
@@ -234,6 +239,10 @@ resetBtn.addEventListener("click", () => {
 });
 
 loseResetBtn.addEventListener("click", () => {
+  location.reload();
+});
+
+winResetBtn.addEventListener("click", () => {
   location.reload();
 });
 
